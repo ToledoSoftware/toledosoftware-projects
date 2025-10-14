@@ -145,7 +145,7 @@ function updateProgress(percentage, stepText = "") {
   progressStepText.textContent = stepText;
 }
 
-// Função auxiliar para simular progresso contínuo (NOVA)
+// Função auxiliar para simular progresso contínuo
 function smoothProgress(startPercent, endPercent, durationMs) {
     const stepTime = 50; 
     const totalSteps = durationMs / stepTime;
@@ -188,6 +188,9 @@ async function runFullOptimization() {
   
   let currentStepProgress = 0; 
   const stepIncrement = 25;    
+
+  // Desabilita o botão Total no início da função
+  document.querySelector("#btn-full-optimize").disabled = true; 
 
   try {
     // Etapa 1: Limpeza de Cache (0% -> 25%)
@@ -241,9 +244,12 @@ async function runFullOptimization() {
     logMessage(translations[currentLanguage].logFullComplete, 'success');
 
   } catch (error) {
+    // Ação de ERRO: Define o progresso para zero antes de limpar.
+    updateProgress(0, "Otimização falhou. Verifique o log.");
     logMessage(`${translations[currentLanguage]['logError']} ${error}`, 'error');
-    updateProgress(progressBar.style.width.replace('%',''), "Otimização falhou!");
   } finally {
+    // Reabilita o botão Total no final
+    document.querySelector("#btn-full-optimize").disabled = false; 
     completeProgress();
   }
 }
