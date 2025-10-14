@@ -1,0 +1,40 @@
+# Arquivos gerados pelo Sistema Operacional e Editores
+.DS_Store
+Thumbs.db
+*.bak
+*.swp
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+
+# Dependências Node.js / JavaScript
+/node_modules
+/dist
+/out
+/npm-debug.log*
+
+# Python
+__pycache__/
+*.pyc
+*.pyd
+*.so
+venv/
+.venv/
+.mypy_cache/
+.pytest_cache/
+.coverage
+
+# Rust / Cargo / Tauri
+/target
+Cargo.lock
+# Exclui o build do frontend, se não estiver na pasta root
+# **/.tauri/
+# **/.cargo/
+
+# Logs e Dados Temporários
+*.log
+*.tmp
+*.temp
+/log/
+/temp/
