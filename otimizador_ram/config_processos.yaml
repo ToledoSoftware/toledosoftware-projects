@@ -1,0 +1,21 @@
+# Lista de processos que o "Modo Turbo" tentará fechar.
+processos_a_fechar:
+  - chrome.exe
+  - spotify.exe
+  - discord.exe
+  - steamwebhelper.exe
+  - epicgameslauncher.exe
+  - onedrive.exe
+
+# Lista de processos que o botão "Restaurar" tentará abrir.
+processos_a_restaurar:
+  - chrome.exe
+  - spotify.exe
+  - discord.exe
+
+# NOVO: Lista de processos de jogos que, ao serem abertos,
+# acionarão uma notificação para otimizar o sistema.
+processos_para_monitorar:
+  - steam.exe
+  - EpicGamesLauncher.exe
+  - Battle.net.exe

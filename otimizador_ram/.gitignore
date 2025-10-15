@@ -1,0 +1,18 @@
+# Arquivos de Log
+*.log
+*.txt
+
+# Cache e ambientes virtuais do Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Arquivos de build do PyInstaller
+build/
+dist/
+*.spec
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
