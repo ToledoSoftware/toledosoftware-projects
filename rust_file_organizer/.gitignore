@@ -1,0 +1,9 @@
+/target
+/eframe_template
+/.local/
+/.config/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+/config.yaml.bak
