@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Senhas em Rust</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <script type="module" crossorigin src="/assets/index-BH9MkQD1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CH5Q26tW.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Gerador de Senhas</h1>
+      
+      <div class="result-container">
+        <input id="password-display" type="text" readonly placeholder="Sua senha aparecerá aqui..." />
+        <button id="copy-button" aria-label="Copiar senha">
+            <i class="fa-regular fa-copy"></i>
+        </button>
+      </div>
+
+      <div class="strength-container">
+        <span id="strength-text">Força:</span>
+        <div id="strength-indicator" class="strength-bar-container">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+      </div>
+
+      <div class="options">
+        <div class="option">
+          <label for="length-slider">Comprimento: <span id="length-value">16</span></label>
+          <input id="length-slider" type="range" min="8" max="64" value="16" />
+        </div>
+        <div class="option-checkbox">
+          <input id="numbers-check" type="checkbox" checked />
+          <label for="numbers-check">Incluir Números (0-9)</label>
+        </div>
+        <div class="option-checkbox">
+          <input id="symbols-check" type="checkbox" checked />
+          <label for="symbols-check">Incluir Símbolos (@#$...)</label>
+        </div>
+        <div class="option-checkbox">
+          <input id="ambiguous-check" type="checkbox" />
+          <label for="ambiguous-check">Evitar Caracteres Ambíguos (l, 1, O, 0)</label>
+        </div>
+      </div>
+
+      <button id="generate-button" class="generate-btn">Gerar Senha</button>
+    </div>
+  </body>
+</html>
