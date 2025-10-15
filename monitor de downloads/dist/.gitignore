@@ -1,0 +1,14 @@
+# Arquivos de Log
+*.log
+
+# Cache do Python
+__pycache__/
+*.pyc
+
+# Ambientes virtuais
+venv/
+.venv/
+
+# Arquivos de build do PyInstaller
+build/
+dist/

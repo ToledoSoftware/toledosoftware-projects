@@ -1,0 +1,6 @@
+{
+    "DOWNLOADS_FOLDER": "~/Downloads",
+    "DOWNLOAD_EXTENSION": ".crdownload",
+    "ALTERNATE_EXTENSION": ".part",
+    "CHECK_INTERVAL_SECONDS": 10
+}
