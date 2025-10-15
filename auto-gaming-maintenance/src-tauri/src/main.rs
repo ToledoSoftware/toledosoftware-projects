@@ -8,9 +8,12 @@ use std::time::Duration;
 use regex::Regex;
 use sysinfo::System; 
 use winreg::enums::*;
-use winreg::RegKey;
-use winreg::HKEY; 
+use winreg::{RegKey, HKEY}; 
 use tauri::{Manager, Emitter};
+
+// GUIDs para o Timeout de Suspensão
+const SUBGROUP_GUID_SLEEP: &str = "238c9fa8-0aad-41ed-83f4-97be242c8f20"; // Subgrupo Suspensão
+const SETTING_GUID_SLEEP_AC: &str = "29f6c1db-86da-48c5-9fdb-f2b67b1f44da"; // Sleep Timeout (AC)
 
 // --- STRUCTS DO SISTEMA ---
 #[derive(serde::Serialize, Clone)]
@@ -30,11 +33,35 @@ struct StartupProgram {
 }
 
 
-// --- ESTADO GLOBAL ---
+// --- ESTADO GLOBAL ATUALIZADO ---
 struct AppState {
     original_power_plan: Mutex<Option<String>>,
+    // NOVO: Armazena o valor original do timeout de suspensão do sistema
+    original_sleep_timeout: Mutex<Option<String>>, 
     sys: Arc<Mutex<System>>, 
 }
+
+// --- FUNÇÕES AUXILIARES DE ENERGIA ---
+
+// Função auxiliar para obter o valor atual de um setting de powercfg
+fn get_current_setting_value(setting_guid: &str) -> Result<String, String> {
+    let output = Command::new("powercfg")
+        .args(&["/Q", "CURRENT", setting_guid])
+        .output()
+        .map_err(|e| e.to_string())?;
+
+    let output_str = String::from_utf8_lossy(&output.stdout);
+    
+    let re = Regex::new(r"Current AC Power Setting Index: 0x([0-9a-fA-F]+)").unwrap();
+    
+    if let Some(caps) = re.captures(&output_str) {
+        // Retorna o valor em hexadecimal como string
+        Ok(caps.get(1).map_or("".to_string(), |m| m.as_str().to_string()))
+    } else {
+        Err(format!("Falha ao ler o valor atual de {}", setting_guid))
+    }
+}
+
 
 // --- GERENCIAMENTO DE INICIALIZAÇÃO ---
 
@@ -135,7 +162,7 @@ fn set_startup_program_enabled(program_name: String, key_path: String, enable: b
 }
 
 
-// --- RESTANTE DO CÓDIGO (SIMPLIFICADO) ---
+// --- COMANDOS DE OTIMIZAÇÃO (ATUALIZADOS) ---
 
 #[derive(serde::Deserialize, serde::Serialize)]
 struct FocusConfig { processes_to_kill: Vec<String> }
@@ -213,6 +240,7 @@ fn clear_system_cache() -> Result<String, String> {
 }
 #[tauri::command]
 fn set_high_performance_plan(state: tauri::State<AppState>) -> Result<String, String> {
+    // --- 1. GERENCIAMENTO DO PLANO DE ENERGIA ---
     let get_active_output = Command::new("powercfg").args(["/getactivescheme"]).output().map_err(|e| e.to_string())?;
     let active_scheme_str = String::from_utf8_lossy(&get_active_output.stdout);
     let re = Regex::new(r"GUID: ([\w-]+)").unwrap();
@@ -222,10 +250,26 @@ fn set_high_performance_plan(state: tauri::State<AppState>) -> Result<String, St
             *original_guid = Some(guid.as_str().to_string());
         }
     }
-    let high_performance_guid = "8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c";
-    Command::new("powercfg").args(["/S", high_performance_guid]).output().map_err(|e| e.to_string())?;
-    Ok("Plano de energia 'Alto Desempenho' ativado.".to_string())
+    const HIGH_PERFORMANCE_GUID: &str = "8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c";
+    Command::new("powercfg").args(["/S", HIGH_PERFORMANCE_GUID]).output().map_err(|e| e.to_string())?;
+
+    // --- 2. GERENCIAMENTO DA SUSPENSÃO (NOVO) ---
+    match get_current_setting_value(SETTING_GUID_SLEEP_AC) {
+        Ok(original_value) => {
+            let mut original_sleep = state.original_sleep_timeout.lock().unwrap();
+            *original_sleep = Some(original_value);
+        },
+        Err(e) => eprintln!("Erro ao salvar timeout de suspensão: {}", e), 
+    }
+
+    // Define o timeout de suspensão (AC) para ZERO (desabilita/Never)
+    if Command::new("powercfg").args(&["/SETACVALUEINDEX", HIGH_PERFORMANCE_GUID, SUBGROUP_GUID_SLEEP, SETTING_GUID_SLEEP_AC, "0"]).output().is_err() {
+        return Err("Falha ao desativar a suspensão do sistema.".to_string());
+    }
+
+    Ok("Plano de energia 'Alto Desempenho' ativado e suspensão desativada.".to_string())
 }
+
 #[tauri::command]
 fn restore_default_plan(state: tauri::State<AppState>) -> Result<String, String> {
     let balanced_guid = "381b4222-f694-41f0-9685-ff5bb260df2e";
@@ -233,7 +277,21 @@ fn restore_default_plan(state: tauri::State<AppState>) -> Result<String, String>
     let mut original_guid = state.original_power_plan.lock().unwrap();
     if let Some(saved_guid) = original_guid.take() { guid_to_restore = saved_guid; }
     Command::new("powercfg").args(["/S", &guid_to_restore]).output().map_err(|e| e.to_string())?;
-    Ok("Plano de energia anterior restaurado.".to_string())
+
+    let mut restore_msg = "Plano de energia anterior restaurado.".to_string();
+
+    // --- RESTAURAÇÃO DA SUSPENSÃO (NOVO) ---
+    let mut original_sleep = state.original_sleep_timeout.lock().unwrap();
+    if let Some(saved_sleep_hex) = original_sleep.take() {
+        // Restaura o valor hexadecimal original para o plano restaurado
+        if Command::new("powercfg").args(&["/SETACVALUEINDEX", &guid_to_restore, SUBGROUP_GUID_SLEEP, SETTING_GUID_SLEEP_AC, &saved_sleep_hex]).output().is_ok() {
+            restore_msg = "Plano de energia e timeout de suspensão restaurados.".to_string();
+        } else {
+            restore_msg = "Plano de energia restaurado, mas falha ao restaurar timeout de suspensão.".to_string();
+        }
+    }
+
+    Ok(restore_msg)
 }
 #[tauri::command]
 fn optimize_network() -> Result<String, String> {
@@ -259,6 +317,8 @@ fn main() {
     tauri::Builder::default()
         .manage(AppState {
             original_power_plan: Mutex::new(None),
+            // NOVO: Inicializa o Mutex de sleep timeout
+            original_sleep_timeout: Mutex::new(None), 
             sys: sys_state.clone(),
         })
         .setup(|app| {
