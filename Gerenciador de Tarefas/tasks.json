@@ -1,0 +1,17 @@
+
+{
+    "e45c4779-d3e9-46f0-b8c3-42e7208d1f2b": {
+        "id": "e45c4779-d3e9-46f0-b8c3-42e7208d1f2b",
+        "titulo": "Implementar a API RESTful",
+        "descricao": "Criar todas as rotas CRUD para o gerenciador de tarefas.",
+        "concluida": false,
+        "criada_em": "2025-10-10T10:00:00.000000"
+    },
+    "67b938f2-89b1-4f11-b21a-96e00d7a0c8d": {
+        "id": "67b938f2-89b1-4f11-b21a-96e00d7a0c8d",
+        "titulo": "Preparar o README.md para o GitHub",
+        "descricao": "Documentar a arquitetura da API (Flask e JSON Persistence).",
+        "concluida": false,
+        "criada_em": "2025-10-12T10:00:00.000000"
+    }
+}
