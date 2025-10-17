@@ -1,0 +1,9 @@
+# Cache e arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de IDEs comuns
+.vscode/
+
+# Ignorar o cache do PyScript ou bibliotecas locais se fossem usadas
+# Adicione quaisquer arquivos de build temporários aqui

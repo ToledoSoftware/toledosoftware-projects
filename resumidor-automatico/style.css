@@ -1,0 +1,40 @@
+.resumidor-interface {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem; /* Adicionado padding para respirar */
+  background-color: var(--card-bg); /* Fundo sutil */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#inputText {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--toggle-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--skill-bg); 
+  color: var(--text-color);
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+#inputText:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: var(--neon-glow);
+}
+
+/* Estilo para a caixa de resultado */
+#resultCard {
+    border-left: 5px solid var(--primary-color) !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 4px 15px rgba(167, 139, 250, 0.2);
+}
+
+#resultCard h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}

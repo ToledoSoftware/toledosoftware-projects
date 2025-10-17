@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumidor Automático | Portfólio</title>
+    <meta name="description" content="Ferramenta de demonstração de IA para resumir textos longos.">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
+    <header id="topo"></header>
+    
+    <main id="main-content">
+        <section id="resumidor" class="page-content">
+            <div class="container reveal">
+                <h2>Resumidor Automático (AI Writer)</h2>
+                <p class="subtitle">Insira um texto longo e a API do Django retornará um resumo simulado, demonstrando a integração com um serviço de IA.</p>
+                
+                <div class="resumidor-interface">
+                    <textarea id="inputText" placeholder="Cole seu texto aqui para ser resumido..." rows="10"></textarea>
+                    <button id="summarizeBtn" class="demo-link" disabled>Resumir Texto</button>
+
+                    <div id="loadingIndicator" style="display: none; color: var(--primary-color); margin-top: 15px;">
+                        <i class="fas fa-spinner fa-spin"></i> Processando resumo...
+                    </div>
+                    
+                    <div id="resultCard" class="card-projeto-lista" style="display: none; margin-top: 20px; border-left: 5px solid #A78BFA; padding: 15px;">
+                        <h3>Resultado do Resumo</h3>
+                        <p><strong>Comprimento Original (Palavras):</strong> <span id="originalLength"></span></p>
+                        <div class="summary-output">
+                            <h4>Resumo:</h4>
+                            <p id="summaryText"></p>
+                        </div>
+                    </div>
+
+                    <div id="errorCard" style="display: none; background-color: #721c24; border: 1px solid #f5c6cb; color: #f8d7da; padding: 15px; border-radius: 8px; margin-top: 20px;">
+                        <h3>Erro</h3>
+                        <p id="errorMessage"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="cta-placeholder"></div>
+    <footer id="footer-placeholder"></footer>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/resumidor.js"></script>
+</body>
+</html>
