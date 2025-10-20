@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Clima</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="weather-app">
+        <h1>Previsão do Tempo</h1>
+        
+        <div class="search-container">
+            <input type="text" id="city-input" placeholder="Digite o nome da cidade...">
+            <button id="search-btn">Pesquisar</button>
+        </div>
+        
+        <div id="weather-result" class="hidden">
+            <h2 id="city-name"></h2>
+            <p id="temperature"></p>
+            <p id="description"></p>
+            <p id="humidity"></p>
+        </div>
+
+        <div id="error-message" class="hidden">
+            <p>Cidade não encontrada. Tente novamente.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

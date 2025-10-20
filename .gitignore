@@ -1,0 +1,33 @@
+# Cria o arquivo .gitignore com o conteúdo correto
+Set-Content .gitignore @"
+# Ignora pastas em QUALQUER subpasta
+**/node_modules/
+**/.expo/
+**/.expo-shared/
+**/build/
+**/dist/
+**/target/
+**/.android/
+**/.ios/
+**/.next/
+**/.vercel/
+
+# IGNORA TODOS OS ARQUIVOS .env
+**/.env
+**/.env.local
+
+# Arquivos de Sistema
+.DS_Store
+Thumbs.db
+*.bak
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Editor / IDE
+.vscode/
+.idea/
+"@

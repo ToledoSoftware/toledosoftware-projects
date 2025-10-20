@@ -1,0 +1,99 @@
+# Exclude node modules and other heavy folders from EAS upload
+node_modules
+**/node_modules
+.git
+.gitignore
+.vscode
+.expo
+.expo-shared
+build
+dist
+android
+ios
+*.keystore
+*.jks
+*.apk
+*.aab
+*.zip
+*.tar.gz
+*.log
+Thumbs.db
+.DS_Store
+**/coverage
+**/*.map
+
+# Additional common large folders to exclude
+**/target
+**/out
+**/release
+**/build/**
+**/dist/**
+**/src-tauri/target/**
+
+# Exclude IDE/editor and OS files
+.idea
+.vscode
+*.sublime-workspace
+*.sublime-project
+
+# Node package manager artifacts
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# OneDrive and backup folders
+**/node_modules/**/node_modules
+**/.git/**
+**/backup/**
+
+# If you need to include a folder for the build, remove it from this list
+
+# Exclude node modules and other heavy folders from EAS upload
+node_modules
+**/node_modules
+.git
+.gitignore
+.vscode
+.expo
+.expo-shared
+build
+dist
+android
+ios
+*.keystore
+*.jks
+*.apk
+*.aab
+*.zip
+*.tar.gz
+*.log
+Thumbs.db
+.DS_Store
+**/coverage
+**/*.map
+
+# Additional common large folders to exclude
+**/target
+**/out
+**/release
+**/build/**
+**/dist/**
+**/src-tauri/target/**
+
+# Exclude IDE/editor and OS files
+.idea
+.vscode
+*.sublime-workspace
+*.sublime-project
+
+# Node package manager artifacts
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# OneDrive and backup folders
+**/node_modules/**/node_modules
+**/.git/**
+**/backup/**
+
+# If you need to include a folder for the build, remove it from this list

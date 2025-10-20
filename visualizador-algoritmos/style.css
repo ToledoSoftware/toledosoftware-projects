@@ -1,0 +1,174 @@
+﻿/* ConfiguraÃ§Ã£o Geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap; /* Para telas menores */
+}
+
+.navbar-brand h2 {
+    margin: 0;
+    color: #333;
+}
+.navbar-brand span {
+    font-size: 0.9rem;
+    color: #007bff;
+    font-weight: normal;
+}
+
+.navbar-controls {
+    display: flex;
+    gap: 15px;
+}
+
+/* Estilo base do botÃ£o */
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #a71d2a;
+}
+
+/* Legenda */
+.navbar-legend {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #555;
+}
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Barra de InstruÃ§Ãµes */
+.instructions {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    color: #555;
+    font-style: italic;
+}
+
+/* A Grade (Grid) */
+#grid-container {
+    margin: 10px 20px 20px 20px; /* Margem de cima menor */
+    display: grid;
+    /* As colunas serÃ£o definidas pelo JavaScript */
+    border: 1px solid #ccc;
+}
+
+/* O "NÃ³" (Cada cÃ©lula da grade) */
+.node {
+    width: 25px;
+    height: 25px;
+    outline: 1px solid #eee;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.node-start {
+    background-color: #28a745; /* Verde */
+}
+.node-finish {
+    background-color: #dc3545; /* Vermelho */
+}
+.node-wall {
+    background-color: #343a40; /* Cinza escuro */
+    transform: scale(0.9);
+}
+
+.node-wall-legend {
+    background-color: #343a40; 
+}
+.node-visited-legend {
+    background-color: rgba(0, 190, 218, 0.7); /* Ciano (cor final) */
+}
+.node-path-legend {
+    background-color: #fffe6a; /* Amarelo (cor final) */
+}
+
+
+
+/* AnimaÃ§Ã£o de visitaÃ§Ã£o */
+.node-visited {
+    animation: visitedAnimation 0.5s forwards;
+}
+@keyframes visitedAnimation {
+    0% {
+        transform: scale(0.3);
+        background-color: rgba(0, 190, 218, 0.3);
+        border-radius: 50%;
+    }
+    50% {
+        background-color: rgba(0, 190, 218, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        background-color: rgba(0, 190, 218, 0.7);
+    }
+}
+
+/* AnimaÃ§Ã£o do caminho mais curto */
+.node-path {
+    animation: pathAnimation 0.5s forwards;
+}
+@keyframes pathAnimation {
+    0% {
+        transform: scale(0.3);
+        background-color: rgba(255, 254, 106, 0.5);
+        border-radius: 50%;
+    }
+    50% {
+        background-color: rgba(255, 254, 106, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        background-color: #fffe6a;
+    }
+}

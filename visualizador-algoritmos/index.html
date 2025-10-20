@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Algoritmo (Dijkstra)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-brand">
+            <h2>Visualizador de Algoritmos <span>(Dijkstra)</span></h2>
+        </div>
+        
+        <div class="navbar-controls">
+            <button id="start-btn" class="btn btn-primary">
+                <i class="fas fa-play"></i> Visualizar
+            </button>
+            <button id="reset-btn" class="btn btn-danger">
+                <i class="fas fa-sync-alt"></i> Limpar Grade
+            </button>
+        </div>
+        
+        <div class="navbar-legend">
+            <div class="legend-item"><div class="legend-color node-start"></div> Início</div>
+            <div class="legend-item"><div class="legend-color node-finish"></div> Fim</div>
+            <div class="legend-item"><div class="legend-color node-wall-legend"></div> Parede</div>
+            <div class="legend-item"><div class="legend-color node-visited-legend"></div> Visitado</div>
+            <div class="legend-item"><div class="legend-color node-path-legend"></div> Caminho</div>
+        </div>
+    </header>
+
+    <main>
+        <div class="instructions">
+            <p><i class="fas fa-mouse-pointer"></i> Clique e arraste para desenhar paredes.</p>
+        </div>
+        
+        <div id="grid-container"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
