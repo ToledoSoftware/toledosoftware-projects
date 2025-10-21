@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Sentimentos (IA)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="sentiment-app">
+        <h1>Analisador de Sentimentos 🤖</h1>
+        <p>Escreva uma frase e deixe a IA analisar o sentimento.</p>
+        
+        <textarea id="text-input" placeholder="Ex: Adorei o novo filme do Batman!"></textarea>
+        <button id="analyze-btn">Analisar</button>
+        
+        <div id="result-container" class="hidden">
+            <h2>Resultado:</h2>
+            <p id="result-text" class="sentiment-neutro"></p>
+        </div>
+
+        <div id="error-message" class="hidden">
+            <p>Ocorreu um erro. Tente novamente.</p>
+        </div>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+</html>

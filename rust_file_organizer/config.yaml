@@ -1,0 +1,14 @@
+source_dir: C:\Users\manec/Downloads
+target_dir: C:\Users\manec/Documents
+history: []
+caminho_compactados: C:\Users\manec/Documents/Arquivos Compactados
+dias_para_considerar_antigo: 30
+regras_de_movimentacao:
+  Documentos:
+  - .pdf
+  - .docx
+  - .txt
+  Imagens:
+  - .jpg
+  - .png
+  - .gif

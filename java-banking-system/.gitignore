@@ -1,0 +1,11 @@
+
+*.class
+*.log
+.vscode/
+.idea/
+.project
+.classpath
+.settings/
+target/
+build/
+.gradle/

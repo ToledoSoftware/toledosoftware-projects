@@ -1,0 +1,136 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  justify-content: center;
+  background-color: #1a1a1a;
+}
+
+.container {
+  width: 480px;
+  padding: 2em;
+  text-align: center;
+  background: #2c2c2c;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-size: 1.5em;
+  line-height: 1.1;
+  color: #79f9ff;
+}
+
+.result-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#password-display {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #444;
+  background-color: #333;
+  color: white;
+  font-size: 1em;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+}
+
+#copy-button {
+  background-color: #555;
+  color: white;
+  border: 1px solid #444;
+  border-left: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 0 6px 6px 0;
+  transition: background-color 0.2s;
+}
+
+#copy-button:hover {
+  background-color: #79f9ff;
+  color: #1a1a1a;
+}
+
+.strength-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+#strength-text {
+    color: #aaa;
+}
+
+.strength-bar-container {
+    display: flex;
+    flex-grow: 1;
+    margin-left: 10px;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #444;
+}
+
+.bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease-in-out;
+}
+
+.options {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.option, .option-checkbox {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    color: #ccc;
+}
+
+input[type="range"] {
+    width: 70%;
+}
+
+.generate-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #79f9ff;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.generate-btn:hover {
+  background-color: #4ce1e6;
+}
