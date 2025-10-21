@@ -1,29 +1,29 @@
 ﻿# Dashboard de Clima (Consumo de API) 🌤️
 
-Uma aplicaÃ§Ã£o front-end para consulta de dados meteorolÃ³gicos em tempo real. Este projeto foca no consumo eficiente de APIs externas e na manipulaÃ§Ã£o dinÃ¢mica do DOM com JavaScript assÃ­ncrono.
+Uma aplicação front-end para consulta de dados meteorológicos em tempo real. Este projeto foca no consumo eficiente de APIs externas e na manipulação dinâmica do DOM com JavaScript assíncrono.
 
-Demonstra competÃªncias prÃ¡ticas em:
+Demonstra competências práticas em:
 
 * **Front-end e Consumo de APIs** (Este projeto)
 * **Back-end e IA (NLP)**
-* **AutomaÃ§Ã£o e Web Scraping**
-* **LÃ³gica e Estrutura de Dados (Visual)**
+* **Automação e Web Scraping**
+* **Lógica e Estrutura de Dados (Visual)**
 * **WebSockets (Tempo Real)**
 
-## ðŸ› ï¸ Tecnologias Utilizadas
+## ⚙️ Tecnologias Utilizadas
 
-O foco deste projeto foi criar uma ferramenta leve e rÃ¡pida, utilizando apenas tecnologias web nativas:
+O foco deste projeto foi criar uma ferramenta leve e rápida, utilizando apenas tecnologias web nativas:
 
-* **HTML5:** Estrutura semÃ¢ntica.
-* **CSS3:** EstilizaÃ§Ã£o moderna (Flexbox) para a interface.
-* **JavaScript (ES6+):** LÃ³gica da aplicaÃ§Ã£o.
-    * **Fetch API:** Para realizar as requisiÃ§Ãµes HTTP.
-    * **Async/Await:** Para gerir o fluxo de dados assÃ­ncrono (Promises).
+* **HTML5:** Estrutura semântica.
+* **CSS3:** Estilização moderna (Flexbox) para a interface.
+* **JavaScript (ES6+):** Lógica da aplicação.
+    * **Fetch API:** Para realizar as requisições HTTP.
+    * **Async/Await:** Para gerir o fluxo de dados assíncrono (Promises).
 * **OpenWeatherMap API:** API RESTful externa para fornecimento dos dados de clima.
 
 ## ⚠️ Como Executar Localmente
 
-1.  **Clonar o repositÃ³rio:**
+1.  **Clonar o repositório:**
 
     ```bash
     git clone [https://github.com/ToledoSoftware/web-clima.git](https://github.com/ToledoSoftware/web-clima.git)
@@ -35,17 +35,17 @@ O foco deste projeto foi criar uma ferramenta leve e rÃ¡pida, utilizando apena
     ```
 
 3.  **Configurar a Chave da API:**
-    * Cria uma conta gratuita no [OpenWeatherMap](https://openweathermap.org/) para gerar a tua API Key.
-    * Abre o ficheiro `script.js`.
-    * Localiza a constante `apiKey` e substitui o conteÃºdo pela sua pela tua chave.
+    * Crie uma conta gratuita no [OpenWeatherMap](https://openweathermap.org/) para gerar a sua API Key.
+    * Abra o ficheiro `script.js`.
+    * Localize a constante `apiKey` e substitua o conteúdo pela sua chave.
 
 4.  **Executar:**
-    * Como este Ã© um projeto puramente estÃ¡tico (HTML/CSS/JS), basta abrir o ficheiro `index.html` no teu navegador.
+    * Como este é um projeto puramente estático (HTML/CSS/JS), basta abrir o ficheiro `index.html` no teu navegador.
 
-## 🎯 CompetÃªncias Demonstradas
+## 🎯 Competências Demonstradas
 
-* **Consumo de API REST:** ImplementaÃ§Ã£o de chamadas `GET` a um endpoint de terceiros.
-* **GestÃ£o de Assincronia:** UtilizaÃ§Ã£o de `async/await` para gerir requisiÃ§Ãµes de forma limpa e legÃ­vel.
-* **ManipulaÃ§Ã£o do DOM:** AtualizaÃ§Ã£o dinÃ¢mica da interface (UI) baseada nos dados recebidos da API, sem recarregar a pÃ¡gina.
-* **Tratamento de Erros:** ImplementaÃ§Ã£o de blocos `try...catch` para lidar com respostas de erro da API (ex: cidade nÃ£o encontrada) e falhas de rede.
-* **SeguranÃ§a de Chaves:** Para este exercÃ­cio didÃ¡tico focado no front-end, a chave da API estÃ¡ no lado do cliente. Em projetos dinÃ¢micos serÃ£o devidamente ocultas no back-end.
+* **Consumo de API REST:** Implementação de chamadas `GET` a um endpoint de terceiros.
+* **Gestão de Assincronia:** Utilização de `async/await` para gerir requisições de forma limpa e legível.
+* **Manipulação do DOM:** Atualização dinâmica da interface (UI) baseada nos dados recebidos da API, sem recarregar a página.
+* **Tratamento de Erros:** Implementação de blocos `try...catch` para lidar com respostas de erro da API (ex: cidade não encontrada) e falhas de rede.
+* **Segurança de Chaves:** Para este exercício didático focado no front-end, a chave da API está no lado do cliente. Em projetos dinâmicos, seriam devidamente ocultas no back-end.

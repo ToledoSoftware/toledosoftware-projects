@@ -1,74 +1,51 @@
-﻿# Projeto 3: Monitor de PreÃ§os (Web Scraping com Python) 🐍
+﻿# 💰 Monitor de Preços (Web Scraper)
 
-Um script de automaÃ§Ã£o que monitora o preÃ§o de um produto em um site de e-commerce (Amazon). O programa utiliza Python para realizar *web scraping*, extrair o preÃ§o atual e comparÃ¡-lo com um valor-alvo definido pelo usuÃ¡rio.
+Um script em Python simples e eficiente para monitorar o preço de um produto específico em uma loja online (como Amazon) e alertar quando ele cair abaixo de um valor alvo.
 
-Este projeto demonstra competÃªncias prÃ¡ticas:
+Este projeto demonstra habilidades em Web Scraping e análise de dados HTML usando as bibliotecas padrão do Python.
 
-* **Front-end e Consumo de APIs** (Projeto 1)
-* **Back-end, Proxy e IA** (Projeto 2)
-* **AutomaÃ§Ã£o e Web Scraping** (Este projeto)
-* **LÃ³gica e Estrutura de Dados (Visual)**
-* **WebSockets (Tempo Real)**
+## ✨ Funcionalidade
 
-## 🎯 CompetÃªncias Demonstradas
+O script `monitor.py`:
+1.  Faz uma requisição HTTP para a URL do produto, fingindo ser um navegador real para evitar bloqueios.
+2.  Utiliza o Beautiful Soup para analisar o conteúdo HTML da página.
+3.  Localiza o elemento de preço na página.
+4.  Limpa e converte o texto do preço (ex: "R$ 476,10") em um número de ponto flutuante (ex: 476.10).
+5.  Compara o preço atual com um `PRECO_ALVO` definido.
+6.  Imprime uma mensagem de "SUCESSO" se o preço estiver abaixo ou igual ao alvo.
 
-Este projeto foca em lÃ³gica de back-end e automaÃ§Ã£o, demonstrando:
-
-* **Web Scraping:** UtilizaÃ§Ã£o das bibliotecas `requests` (para baixar o HTML) e `BeautifulSoup` (para "ler" e filtrar o HTML).
-* **SimulaÃ§Ã£o de Navegador:** ImplementaÃ§Ã£o de `Headers` (como `User-Agent`) para evitar bloqueios de *bots* pelo servidor da Amazon.
-* **Limpeza de Dados (Data Cleaning):** CriaÃ§Ã£o de uma funÃ§Ã£o (`limpar_preco`) para converter dados de texto "sujos" (ex: "R$ 476,10") em dados numÃ©ricos puros (ex: `476.10`) para possibilitar a lÃ³gica de programaÃ§Ã£o.
-* **LÃ³gica de ProgramaÃ§Ã£o com Python:** ComparaÃ§Ã£o de valores e exibiÃ§Ã£o de resultados condicionais.
-* **Gerenciamento de Pacotes Python:** Uso de `venv` (ambiente virtual) e `requirements.txt` para um gerenciamento de dependÃªncias limpo e replicÃ¡vel.
-
-## âš ï¸ Aviso Importante sobre Web Scraping
-
-Scripts de *web scraping* sÃ£o, por natureza, "frÃ¡geis". O funcionamento deste script depende **diretamente** da estrutura HTML do site da Amazon (ex: o `id="productTitle"` e a classe `class="a-offscreen"`).
-
-Se a Amazon decidir alterar o design do seu site (o que acontece), este script pode "quebrar" e precisarÃ¡ de manutenÃ§Ã£o. Isso Ã© uma caracterÃ­stica fundamental de todos os projetos de scraping.
-
-## ðŸ› ï¸ Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
 * **Python 3**
-* **Requests:** Para fazer as requisiÃ§Ãµes HTTP.
-* **BeautifulSoup4 (bs4):** Para fazer o *parsing* (anÃ¡lise) do HTML.
-* **venv:** Para gerenciamento do ambiente virtual.
+* **Requests:** Para fazer as requisições HTTP.
+* **BeautifulSoup4:** Para a análise (parsing) do HTML e extração de dados.
 
-## ⚠️ Como Executar Localmente
+## 🚀 Guia de Início Rápido
 
-1.  **Clonar o repositÃ³rio:***
-    ```bash
-    git clone [https://github.com/ToledoSoftware/monitor-preÃ§os.git](https://github.com/ToledoSoftware/monitor-preÃ§os.git)
-    cd NOME-DO-REPO
-    ```
+### 1. Pré-requisitos
 
-2.  **Criar e Ativar o Ambiente Virtual (venv):**
-    ```bash
-    # Criar o ambiente
-    python -m venv venv
-    
-    # Ativar o ambiente (Windows)
-    .\venv\Scripts\activate
-    ```
-    *(Seu terminal deve agora mostrar (venv) no inÃ­cio da linha)*
+Certifique-se de ter o Python 3 instalado em sua máquina.
 
-3.  **Instalar as DependÃªncias:**
-    Este comando lÃª o `requirements.txt`.
-    ```bash
-    pip install -r requirements.txt
-    ```
+### 2. Instalação das Dependências
 
-4.  **Configurar o Script (Opcional):**
-    * Abra o arquivo `monitor.py`.
-    * VocÃª pode alterar a variÃ¡vel `URL` para qualquer outro produto da Amazon.
-    * VocÃª pode alterar a variÃ¡vel `PRECO_ALVO` para o valor que desejar.
+Instale as bibliotecas necessárias listadas em `requirements.txt`:
 
-5.  **Executar o Script:**
-    ```bash
-    python monitor.py
-    ```
+```bash
+pip install -r requirements.txt
 
-## 🚀 PrÃ³ximos Passos (ExtensÃµes)
+### 3. Configuração (Obrigatória)
 
-Este script serve como base para uma automaÃ§Ã£o completa. Ele pode ser estendido para:
-* Enviar um e-mail (usando `smtplib`) ou uma notificaÃ§Ã£o (usando outra API) quando o preÃ§o baixar.
-* Rodar automaticamente em um servidor (usando `cron jobs` ou o Agendador de Tarefas do Windows) para verificar o preÃ§o uma vez por dia.
+Antes de executar, você deve editar o arquivo `monitor.py` para configurar os detalhes da sua busca:
+
+* **`URL`:** Altere para o link do produto que você deseja monitorar.
+* **`PRECO_ALVO`:** Defina o valor máximo que você está disposto a pagar.
+* **`HEADERS`:** **IMPORTANTE!** Sites como a Amazon bloqueiam scripts. Pesquise "my user agent" no Google e substitua o valor em `HEADERS` com o seu próprio User-Agent para simular um navegador real.
+
+### 4. Execução
+
+Execute o script a partir do seu terminal:
+
+```bash
+python monitor.py
+
+O script irá imprimir o preço atual e informar se ele está dentro ou fora do seu alvo.
