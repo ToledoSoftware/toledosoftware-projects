@@ -8,18 +8,17 @@ import { useEffect } from 'react';
 import { ThemeProvider, useTheme } from '../context/ThemeContext';
 import { StatusBar } from 'expo-status-bar';
 import * as Notifications from 'expo-notifications';
-import { Platform } from 'react-native'; // <-- 1. Importar Platform
+import { Platform } from 'react-native';
 
-// 2. Configurar o handler com TODAS as propriedades
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
     shouldPlaySound: true,
     shouldSetBadge: false,
-    // --- CORREÇÃO (Adicionando propriedades faltando) ---
-    // @ts-ignore (Ignora caso a tipagem não bata 100%, mas garante que funcione)
-    shouldShowBanner: true, // (iOS)
-    shouldShowList: true,   // (Android)
+    // @ts-ignore
+    shouldShowBanner: true,
+    // @ts-ignore
+    shouldShowList: true,
   }),
 });
 
@@ -31,21 +30,18 @@ async function registerForPushNotificationsAsync() {
     finalStatus = status;
   }
   if (finalStatus !== 'granted') {
-    alert('Falha ao obter permissão para notificações! O app não poderá enviar lembretes.');
+    alert('Failed to get push token for push notification! Reminders might not work.');
     return;
   }
 
-  // --- 3. ADICIONAR CANAL PARA ANDROID ---
-  // Isso é obrigatório para notificações agendadas no Android
   if (Platform.OS === 'android') {
     await Notifications.setNotificationChannelAsync('default', {
       name: 'default',
-      importance: Notifications.AndroidImportance.MAX, // Garante que a notificação apareça
+      importance: Notifications.AndroidImportance.MAX,
       vibrationPattern: [0, 250, 250, 250],
       lightColor: '#FF231F7C',
     });
   }
-  // --- FIM DA CORREÇÃO ANDROID ---
 }
 
 export { ErrorBoundary } from 'expo-router';
@@ -53,7 +49,6 @@ export { ErrorBoundary } from 'expo-router';
 SplashScreen.preventAutoHideAsync();
 
 function ThemedApp() {
-  // ... (O resto desta função continua igual)
   const { theme } = useTheme();
 
   return (
@@ -72,7 +67,7 @@ function ThemedApp() {
           name="modal"
           options={{
             presentation: 'modal',
-            title: 'Adicionar Novo Hábito',
+            title: 'Add New Habit', // Traduzido
             headerStyle: {
               backgroundColor: theme === 'dark' ? '#1A1A1A' : '#F8F8F8',
             },
@@ -84,7 +79,6 @@ function ThemedApp() {
 }
 
 export default function RootLayout() {
-  // ... (O resto desta função continua igual)
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,

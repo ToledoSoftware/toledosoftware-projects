@@ -2,17 +2,16 @@
 import { useTheme } from '../../context/ThemeContext';
 import Colors from '@/constants/Colors';
 import React, { useState, useEffect } from 'react';
-import { Text, View } from '@/components/Themed'; // Temáticos
+import { Text, View } from '@/components/Themed';
 import {
   StyleSheet,
   FlatList,
   ActivityIndicator
-} from 'react-native'; // Essenciais
+} from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import { habitService } from '../../services/habitService';
-import { Habit } from '../../services/types';
 import { calculateCurrentStreak, calculateLongestStreak, HabitStats } from '../../services/streakUtils';
-import FontAwesome from '@expo/vector-icons/FontAwesome'; // <-- 1. IMPORTAR FONT AWESOME
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function TabStatsScreen() {
   const { theme } = useTheme();
@@ -20,6 +19,7 @@ export default function TabStatsScreen() {
   const [loading, setLoading] = useState(true);
   const isFocused = useIsFocused();
 
+  // Carrega os hábitos e calcula as streaks
   const loadStats = async () => {
     setLoading(true);
     try {
@@ -37,13 +37,14 @@ export default function TabStatsScreen() {
     }
   };
 
+  // Recarrega as estatísticas quando a tela recebe foco
   useEffect(() => {
     if (isFocused) {
       loadStats();
     }
   }, [isFocused]);
 
-  // --- 2. ATUALIZAR RENDERSTATITEM ---
+  // Componente para renderizar cada item de estatística na lista
   const renderStatItem = ({ item }: { item: HabitStats }) => (
     <View style={[
       styles.itemContainer,
@@ -54,24 +55,23 @@ export default function TabStatsScreen() {
     ]}>
       <Text style={styles.itemTitle}>{item.title}</Text>
       <View style={styles.streaksContainer}>
-        {/* Streak Atual com ícone */}
+        {/* Streak Atual */}
         <View style={styles.streakRow}>
-          <FontAwesome 
-            name="fire" 
-            size={16} 
-            color={Colors[theme].tint} // Usa a cor de destaque do tema
-            style={styles.streakIcon} 
+          <FontAwesome
+            name="fire"
+            size={16}
+            color={Colors[theme].tint}
+            style={styles.streakIcon}
           />
           <Text style={styles.streakText}>Atual: {item.currentStreak}</Text>
         </View>
-        
-        {/* Recorde com ícone */}
+        {/* Recorde */}
         <View style={styles.streakRow}>
-           <FontAwesome 
-            name="trophy" 
-            size={16} 
-            color="#FFD700" // Ouro (pode ser fixo)
-            style={styles.streakIcon} 
+           <FontAwesome
+            name="trophy"
+            size={16}
+            color="#FFD700" // Cor de ouro fixa
+            style={styles.streakIcon}
           />
           <Text style={styles.streakText}>Recorde: {item.longestStreak}</Text>
         </View>
@@ -79,6 +79,7 @@ export default function TabStatsScreen() {
     </View>
   );
 
+  // Tela de loading
   if (loading) {
     return (
       <View style={styles.center}>
@@ -91,11 +92,13 @@ export default function TabStatsScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Estatísticas de Hábitos</Text>
+      {/* Mensagem se não houver estatísticas */}
       {habitStats.length === 0 ? (
         <View style={styles.center}>
           <Text style={styles.emptyText}>Adicione hábitos para ver as estatísticas.</Text>
         </View>
       ) : (
+        // Lista de estatísticas
         <FlatList
           data={habitStats}
           keyExtractor={(item) => item.id}
@@ -107,7 +110,6 @@ export default function TabStatsScreen() {
   );
 }
 
-// --- 3. ATUALIZAR ESTILOS ---
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -137,13 +139,12 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10, // Aumenta o espaço
+    marginBottom: 10,
   },
   streaksContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  // NOVOS ESTILOS
   streakRow: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -1,5 +1,4 @@
 // app/modal.tsx
-
 import React, { useState } from 'react';
 import { Text, View } from '@/components/Themed';
 import {
@@ -8,61 +7,59 @@ import {
   StyleSheet,
   Platform,
   Alert,
-  Pressable, // <-- Adicionado
+  Pressable,
 } from 'react-native';
 import { router } from 'expo-router';
 import { habitService } from '../services/habitService';
 import { useTheme } from '../context/ThemeContext';
 import Colors from '@/constants/Colors';
-import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker'; // <-- Adicionado
-import FontAwesome from '@expo/vector-icons/FontAwesome'; // <-- Adicionado
+import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function ModalScreen() {
   const [title, setTitle] = useState('');
   const { theme } = useTheme();
-
-  // --- Estados para o Horário ---
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
   const [notificationTime, setNotificationTime] = useState<string | null>(null);
 
-  // Manipulador do seletor de horário
   const onChangeTime = (event: DateTimePickerEvent, selectedDate?: Date) => {
     const currentDate = selectedDate || date;
-    setShowPicker(Platform.OS === 'ios'); // No iOS, o picker é um modal
+    setShowPicker(Platform.OS === 'ios');
     setDate(currentDate);
 
     if (event.type === 'set') {
-      // Formata a hora para "HH:MM"
       const hours = currentDate.getHours().toString().padStart(2, '0');
       const minutes = currentDate.getMinutes().toString().padStart(2, '0');
       setNotificationTime(`${hours}:${minutes}`);
+    } else {
+      // User cancelled picker
+      setShowPicker(false);
     }
   };
 
   const handleAddHabit = async () => {
     if (title.trim().length === 0) {
-      Alert.alert("Erro", "O título não pode estar vazio.");
+      Alert.alert("Error", "Title cannot be empty."); // Traduzido
       return;
     }
     try {
-      // Envia o título e o horário (que pode ser null)
       await habitService.createHabit(title, notificationTime);
       router.back();
     } catch (e) {
       console.error(e);
-      Alert.alert("Erro", "Não foi possível criar o hábito.");
+      Alert.alert("Error", "Could not create habit."); // Traduzido
     }
   };
 
-  const themeColors = Colors[theme]; // Pega as cores do tema
+  const themeColors = Colors[theme];
 
   return (
     <View style={styles.container}>
       <TextInput
         value={title}
         onChangeText={setTitle}
-        placeholder="Ex: Ler 20 minutos"
+        placeholder="E.g., Read 20 minutes" // Traduzido
         style={[
           styles.input,
           {
@@ -74,43 +71,37 @@ export default function ModalScreen() {
         placeholderTextColor={themeColors.tabIconDefault}
       />
 
-      {/* Seletor de Lembrete */}
-      <Text style={[styles.label, { color: themeColors.text }]}>Lembrete (Opcional)</Text>
-      
+      <Text style={[styles.label, { color: themeColors.text }]}>Reminder (Optional)</Text> {/* Traduzido */}
+
       <Pressable onPress={() => setShowPicker(true)} style={[styles.timePickerButton, { backgroundColor: themeColors.cardBackground, borderColor: themeColors.borderColor }]}>
         <FontAwesome name="bell-o" size={16} color={themeColors.tabIconDefault} />
         <Text style={{ color: notificationTime ? themeColors.tint : themeColors.tabIconDefault, marginLeft: 10 }}>
-          {notificationTime ? `Diariamente às ${notificationTime}` : "Sem lembrete"}
+          {notificationTime ? `Daily at ${notificationTime}` : "No reminder set"} {/* Traduzido */}
         </Text>
       </Pressable>
 
-      {/* Remove o lembrete */}
       {notificationTime && (
         <Pressable onPress={() => setNotificationTime(null)} style={styles.removeButton}>
-          <Text style={{ color: '#dc3545' }}>Remover lembrete</Text>
+          <Text style={{ color: '#dc3545' }}>Remove reminder</Text> {/* Traduzido */}
         </Pressable>
       )}
 
-      {/* O componente do Seletor de Horário */}
       {showPicker && (
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
-          mode={'time'} // Queremos apenas a hora
+          mode={'time'}
           is24Hour={true}
-          display="default"
+          display={Platform.OS === 'ios' ? 'spinner' : 'default'} // Ajustado display para iOS
           onChange={onChangeTime}
-          // Força o tema do seletor nativo
-          themeVariant={theme} 
+          themeVariant={theme}
         />
       )}
-      
-      {/* Botão Salvar (espaçado) */}
-      <View style={{ marginTop: 20 }}>
-        <Button onPress={handleAddHabit} title="Salvar Hábito" color={themeColors.tint} />
-      </View>
 
-      {Platform.OS === 'ios' && <View style={{ height: 20 }} />}
+      {/* Adicionado espaço antes do botão */}
+      <View style={{ marginTop: 'auto', marginBottom: Platform.OS === 'ios' ? 20 : 0 }}> 
+        <Button onPress={handleAddHabit} title="Save Habit" color={themeColors.tint} /> {/* Traduzido */}
+      </View>
     </View>
   );
 }
@@ -138,9 +129,10 @@ const styles = StyleSheet.create({
     padding: 15,
     borderWidth: 1,
     borderRadius: 8,
+    marginBottom: 10, // Espaço adicionado
   },
   removeButton: {
-    marginTop: 10,
+    marginTop: 5, // Ajustado
     alignItems: 'center',
   }
 });
