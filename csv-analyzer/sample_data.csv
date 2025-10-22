@@ -1,0 +1,11 @@
+ID,Produto,Categoria,Preco,Estoque,DataVenda
+1,Laptop,Eletrônicos,4500.00,50,2025-01-15
+2,Mouse,Acessórios,150.50,200,2025-01-16
+3,Teclado,Acessórios,300.00,150,2025-01-17
+4,Monitor,Eletrônicos,1200.00,75,2025-01-18
+5,Smartphone,Eletrônicos,2500.00,100,2025-02-01
+6,Cadeira Gamer,Móveis,950.00,40,2025-02-03
+7,Fone de Ouvido,Acessórios,450.75,120,2025-02-05
+8,Mesa de Escritório,Móveis,600.00,30,2025-02-10
+9,Laptop,Eletrônicos,4800.00,45,2025-02-12
+10,Mouse,Acessórios,160.00,180,2025-02-15
