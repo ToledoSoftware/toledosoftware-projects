@@ -1,42 +1,51 @@
-# "StreamFlix" (Template de Streaming)
+# "StreamFlix" (Streaming UI Template)
 
-Um template de UI (Interface do Usuário) de alta fidelidade para uma plataforma de streaming (Netflix/YouTube), construído com Next.js, React, TypeScript e Tailwind CSS.
+A high-fidelity UI template for a streaming platform (Netflix-like), built with Next.js (App Router), React, TypeScript, and Tailwind CSS.
 
-Este projeto foca na criação de layouts complexos e responsivos, componentização e uso de bibliotecas de UI modernas.
+## 🚀 Live Demo
 
-## 🎯 Competências Demonstradas
+[**Check out the live demo here!**](https://streamflix-cafyy6e3h-emmanuels-projects-cb3df2e2.vercel.app/) 
 
-* **Next.js (App Router):** Utilização do framework React líder de mercado para performance e estrutura de projeto.
-* **TypeScript:** Aplicação de tipagem estática em todos os componentes, props e estados.
-* **Tailwind CSS:** Estilização utility-first avançada para criar rapidamente uma UI complexa, responsiva e com tema escuro (dark mode).
-* **Componentização (React):** Criação de componentes reutilizáveis (`Hero`, `ContentCarousel`) e gerenciamento de estado local (`useState`, `useEffect`).
-* **Layouts Modernos (Flexbox/Grid):** Construção de layouts de página inteira (Hero com overlay) e carrosséis horizontais (sliders).
-* **Integração de Bibliotecas:** Uso do `embla-carousel-react` para criar sliders performáticos e "arrastáveis".
+This project focuses on creating complex, responsive layouts, componentization, and using modern UI libraries to showcase frontend development skills.
 
-## 🛠️ Tecnologias Utilizadas
+## 🎯 Skills Demonstrated
 
-* **Framework:** Next.js 14+ (App Router)
-* **Linguagem:** TypeScript
-* **Estilização:** Tailwind CSS
-* **Componentes:** React
-* **Biblioteca de UI:** `embla-carousel-react` (Para os sliders)
+* **Next.js (App Router):** Utilization of the leading React framework for performance and project structure.
+* **TypeScript:** Application of static typing across all components, props, and states.
+* **Tailwind CSS:** Advanced utility-first styling to rapidly build a complex, responsive UI with dark mode support, aligned with a custom design system.
+* **Componentization (React):** Creation of reusable components (`Hero`, `ContentCarousel`, `Navbar`, `Footer`, `DetailsModal`) and local state management (`useState`, `useEffect`).
+* **Modern Layouts (Flexbox/Grid):** Construction of full-page layouts (Hero with overlay gradients) and horizontal carousels (sliders).
+* **Library Integration:** Use of `embla-carousel-react` for performant and draggable sliders, and `headlessui/react` for accessible modals.
+* **Deployment:** Configuration and deployment via Vercel, including handling framework-specific build settings and environment (image hostnames).
 
-## ⚙️ Como Executar Localmente
+## 🛠️ Tech Stack
 
-1.  **Clonar o repositório:**
+* **Framework:** Next.js 15+ (App Router, Turbopack)
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS 3.x
+* **UI Library:** React 19
+* **Carousel:** `embla-carousel-react`
+* **Modal:** `@headlessui/react`
+* **Icons:** `lucide-react`
+
+## ⚙️ Running Locally
+
+1.  **Clone the repository:**
     ```bash
+    # Clone the main project repository
     git clone [https://github.com/ToledoSoftware/toledosoftware-projects.git](https://github.com/ToledoSoftware/toledosoftware-projects.git)
-    cd toledosoftware-projects/streamflix
+    # Navigate into the StreamFlix project folder
+    cd toledosoftware-projects/streamflix 
     ```
 
-2.  **Instalar Dependências:**
+2.  **Install Dependencies:**
     ```bash
     npm install
     ```
 
-3.  **Rodar o Servidor de Desenvolvimento:**
+3.  **Run the Development Server:**
     ```bash
     npm run dev
     ```
 
-4.  Abra `http://localhost:3000` no seu navegador.
+4.  Open `http://localhost:3000` in your browser.
