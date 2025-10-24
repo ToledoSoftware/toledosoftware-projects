@@ -46,16 +46,16 @@ export default function ContentCarousel({ title, items, onShowDetails }: Content
 
   return (
     <div className="space-y-4">
-      <h2 className="text-3xl font-display">{title}</h2>
+      <h2 className="text-2xl md:text-3xl font-display">{title}</h2>
 
       <div className="relative group">
         <div className="overflow-visible" ref={emblaRef}>
-          <div className="flex space-x-4 py-12 -my-12">
+          <div className="flex space-x-3 md:space-x-4 py-8 md:py-12 -my-8 md:-my-12">
             {items.map((item) => (
               <div
                 key={item.id}
                 className="
-                  group/item relative flex-shrink-0 w-[160px] md:w-[200px] aspect-[2/3]
+                  group/item relative flex-shrink-0 w-[140px] md:w-[160px] lg:w-[200px] aspect-[2/3]
                   transition-transform duration-300 ease-out
                   group-hover/item:scale-125 group-hover/item:z-20
                   group-hover/item:delay-400
@@ -64,10 +64,8 @@ export default function ContentCarousel({ title, items, onShowDetails }: Content
               >
                 <div
                   className="
-                    absolute inset-0
-                    bg-background-light rounded-lg shadow-lg
-                    border border-border
-                    transition-shadow duration-300 ease-out
+                    absolute inset-0 bg-background-light rounded-lg shadow-lg
+                    border border-border transition-shadow duration-300 ease-out
                     group-hover/item:shadow-neon-glow
                   "
                 />
@@ -80,24 +78,23 @@ export default function ContentCarousel({ title, items, onShowDetails }: Content
                     alt={item.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 160px, 200px"
+                    sizes="(max-width: 767px) 140px, (max-width: 1023px) 160px, 200px"
                     unoptimized
                   />
                 </div>
                 <div
                   className="
-                    absolute bottom-0 left-0 right-0 p-3 space-y-2
+                    absolute bottom-0 left-0 right-0 p-2 md:p-3 space-y-1 md:space-y-2
                     bg-gradient-to-t from-black/80 to-transparent
                     opacity-0 group-hover/item:opacity-100
-                    transition-opacity duration-300 ease-out
-                    z-30
-                    group-hover/item:delay-400
-                    pointer-events-none
+                    transition-opacity duration-300 ease-out z-30
+                    group-hover/item:delay-400 pointer-events-none
+                    scale-125
                   "
                 >
-                  <p className="text-white text-sm font-bold truncate">{item.title}</p>
-                  <div className="flex justify-between items-center pointer-events-auto">
-                    <div className="flex space-x-2">
+                  <p className="text-white text-xs md:text-sm font-bold truncate">{item.title}</p>
+                  <div className="flex justify-between items-center pointer-events-auto scale-[0.8] md:scale-100 origin-bottom-left">
+                    <div className="flex space-x-1 md:space-x-2">
                       <button className="hover-icon-btn"><Play size={16} fill="white" /></button>
                       <button className="hover-icon-btn"><Plus size={16} /></button>
                       <button className="hover-icon-btn"><ThumbsUp size={16} /></button>
@@ -116,12 +113,12 @@ export default function ContentCarousel({ title, items, onShowDetails }: Content
         </div>
 
         {canScrollPrev && (
-          <button className="carousel-btn prev-btn" onClick={scrollPrev}>
+          <button className="carousel-btn prev-btn hidden md:flex" onClick={scrollPrev}>
             <ChevronLeft className="h-8 w-8" />
           </button>
         )}
         {canScrollNext && (
-          <button className="carousel-btn next-btn" onClick={scrollNext}>
+          <button className="carousel-btn next-btn hidden md:flex" onClick={scrollNext}>
             <ChevronRight className="h-8 w-8" />
           </button>
         )}

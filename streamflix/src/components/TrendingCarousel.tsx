@@ -46,23 +46,24 @@ export default function TrendingCarousel({ title, items, onShowDetails }: Trendi
 
   return (
     <div className="space-y-4">
-      <h2 className="text-3xl font-display mb-6">{title}</h2>
+      <h2 className="text-2xl md:text-3xl font-display mb-6">{title}</h2>
 
       <div className="relative group">
         <div className="overflow-visible" ref={emblaRef}>
-          <div className="flex space-x-6">
+          <div className="flex space-x-4 md:space-x-6"> 
 
             {items.map((item, index) => (
               <div
                 key={item.id}
-                className="group/item relative flex-shrink-0 w-[280px] md:w-[320px] cursor-pointer"
+                className="group/item relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] cursor-pointer" 
                 onClick={() => onShowDetails(item)}
               >
                 <div className="flex items-end">
                   <div
                     className="
-                      text-[160px] font-extrabold text-background-lighter/50
-                      leading-none -mr-8 z-0
+                      text-[120px] sm:text-[160px] {/* Tamanho responsivo */}
+                      font-extrabold text-background-lighter/50
+                      leading-none -mr-6 sm:-mr-8 z-0 {/* Margem responsiva */}
                       transition-transform duration-300 ease-out
                       group-hover/item:scale-110
                     "
@@ -86,11 +87,11 @@ export default function TrendingCarousel({ title, items, onShowDetails }: Trendi
                       alt={item.title}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 768px) 280px, 320px"
+                      sizes="(max-width: 639px) 240px, (max-width: 767px) 280px, 320px" 
                       unoptimized
                     />
-                    <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 via-black/50 to-transparent z-20">
-                      <h3 className="text-lg font-bold text-text truncate">
+                    <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 bg-gradient-to-t from-black/70 via-black/50 to-transparent z-20">
+                      <h3 className="text-base sm:text-lg font-bold text-text truncate">
                         {item.title}
                       </h3>
                     </div>
@@ -103,7 +104,7 @@ export default function TrendingCarousel({ title, items, onShowDetails }: Trendi
 
         {canScrollPrev && (
           <button
-            className="carousel-btn prev-btn"
+            className="carousel-btn prev-btn hidden md:flex" 
             onClick={scrollPrev}
           >
             <ChevronLeft className="h-8 w-8" />
@@ -111,7 +112,7 @@ export default function TrendingCarousel({ title, items, onShowDetails }: Trendi
         )}
         {canScrollNext && (
           <button
-            className="carousel-btn next-btn"
+            className="carousel-btn next-btn hidden md:flex" 
             onClick={scrollNext}
           >
             <ChevronRight className="h-8 w-8" />
