@@ -1,0 +1,19 @@
+{
+  "name": "auto-gaming-maintenance",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "vite": "^7.1.10"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.8.0"
+  }
+}
