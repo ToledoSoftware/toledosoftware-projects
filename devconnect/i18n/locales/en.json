@@ -1,0 +1,69 @@
+{
+  "welcome": "Welcome to DevConnect!",
+  "sidebar": {
+    "home": "Home",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "post": "Post",
+    "logout_login": "Logout / Login"
+  },
+  "bottomNav": {
+    "post_aria_label": "Create new post"
+  },
+  "feed": {
+    "title": "Main Feed",
+    "whats_happening": "What's happening?"
+  },
+  "postItem": {
+    "comments_aria_label": "Comments",
+    "retweets_aria_label": "Retweets",
+    "likes_aria_label": "Likes"
+  },
+  "login": {
+    "title": "DevConnect",
+    "email_label": "E-mail",
+    "password_label": "Password",
+    "submit_button": "Sign In",
+    "no_account": "Don't have an account?",
+    "register_link": "Sign Up"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "no_notifications": "No new notifications yet.",
+    "interactions_info": "When someone interacts with you, it will show up here.",
+    "liked_your_post": "liked your post",
+    "followed_you": "followed you"
+  },
+  "profile": {
+    "title": "Profile",
+    "posts_count": "{count} Post | {count} Posts",
+    "edit_profile": "Edit Profile",
+    "joined_date": "Joined {date}",
+    "following": "Following",
+    "followers": "Followers",
+    "tab_posts": "Posts",
+    "tab_replies": "Replies",
+    "tab_media": "Media",
+    "tab_likes": "Likes",
+    "no_posts_found": "No posts found.",
+    "change_cover": "Change Cover",
+    "change_avatar": "Change Avatar"
+  },
+  "widgets": {
+    "whats_happening": "What's happening",
+    "trending_topic": "{topic} · Trending",
+    "posts_count_simple": "{count} post | {count} posts",
+    "show_more": "Show more",
+    "who_to_follow": "Who to follow",
+    "follow_button": "Follow"
+  },
+  "postModal": {
+    "title": "Create Post",
+    "placeholder": "What's happening?",
+    "submit_button": "Post",
+    "close_aria_label": "Close modal"
+  },
+  "themeSwitcher": {
+    "toggle_aria_label": "Toggle theme"
+  }
+}

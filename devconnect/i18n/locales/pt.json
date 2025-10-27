@@ -1,0 +1,69 @@
+{
+  "welcome": "Bem-vindo ao DevConnect!",
+  "sidebar": {
+    "home": "Início",
+    "notifications": "Notificações",
+    "profile": "Perfil",
+    "post": "Postar",
+    "logout_login": "Sair / Login"
+  },
+  "bottomNav": {
+    "post_aria_label": "Criar novo post" 
+  },
+  "feed": {
+    "title": "Feed Principal",
+    "whats_happening": "O que está acontecendo?"
+  },
+  "postItem": {
+    "comments_aria_label": "Comentários",
+    "retweets_aria_label": "Retweets",
+    "likes_aria_label": "Curtidas"
+  },
+  "login": {
+    "title": "DevConnect",
+    "email_label": "E-mail",
+    "password_label": "Senha",
+    "submit_button": "Entrar",
+    "no_account": "Não tem uma conta?",
+    "register_link": "Cadastre-se"
+  },
+  "notifications": {
+    "title": "Notificações",
+    "no_notifications": "Nenhuma notificação nova por enquanto.",
+    "interactions_info": "Quando alguém interagir com você, aparecerá aqui.",
+    "liked_your_post": "curtiu seu post",
+    "followed_you": "seguiu você"
+  },
+  "profile": {
+    "title": "Perfil",
+    "posts_count": "{count} Post | {count} Posts", 
+    "edit_profile": "Editar Perfil",
+    "joined_date": "Ingressou em {date}", 
+    "following": "Seguindo",
+    "followers": "Seguidores",
+    "tab_posts": "Posts",
+    "tab_replies": "Respostas",
+    "tab_media": "Mídia",
+    "tab_likes": "Curtidas",
+    "no_posts_found": "Nenhum post encontrado.",
+    "change_cover": "Alterar Capa",
+    "change_avatar": "Alterar Avatar" 
+  },
+  "widgets": {
+    "whats_happening": "O que está acontecendo",
+    "trending_topic": "{topic} · Em alta", 
+    "posts_count_simple": "{count} post | {count} posts", 
+    "show_more": "Mostrar mais",
+    "who_to_follow": "Quem seguir",
+    "follow_button": "Seguir"
+  },
+  "postModal": {
+    "title": "Criar Post",
+    "placeholder": "O que está acontecendo?",
+    "submit_button": "Postar",
+    "close_aria_label": "Fechar modal"
+  },
+  "themeSwitcher": {
+    "toggle_aria_label": "Alternar tema"
+  }
+}
