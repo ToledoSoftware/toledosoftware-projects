@@ -8,7 +8,6 @@ Uma aplicação de desktop multiplataforma, construída em **Rust**, que organiz
 
 O projeto utiliza a biblioteca `egui` para uma interface gráfica reativa e leve, e implementa **multithreading** para garantir que a UI nunca congele durante as operações de arquivo.
 
-![GUI Screenshot](https://i.imgur.com/seu-link-aqui.png) 
 ---
 
 ## ✨ Funcionalidades
@@ -54,4 +53,4 @@ O Cargo gerencia todas as dependências automaticamente.
 
 Feito com 💜 por **Emmanuel Toledo**
 
-[GitHub](https://github.com/emmanuel-toledo-dev/) | [LinkedIn](https://www.linkedin.com/in/emmanuel-toledo-163b561a0/?locale=pt)
+[GitHub](https://github.com/ToledoSoftware/) | [LinkedIn](https://www.linkedin.com/in/emmanuellucastoledo)
