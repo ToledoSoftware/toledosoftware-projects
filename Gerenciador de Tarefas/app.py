@@ -12,7 +12,7 @@ def load_tasks():
         with open('tasks.json', 'r') as f:
             return json.load(f)
     except FileNotFoundError:
-        # Se o arquivo não existe, começamos com uma lista vazia.
+        # se o arquivo não existe, começamos com uma lista vazia.
         return []
 
 def save_tasks(tasks):
