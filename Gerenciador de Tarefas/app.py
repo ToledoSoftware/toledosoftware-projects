@@ -1,12 +1,10 @@
-# app.py (Atualizado com UUIDs)
+# app.py
 
 from flask import Flask, request, jsonify
 import json
 import uuid # Importa a biblioteca para IDs únicos
 
 app = Flask(__name__)
-
-# --- Funções Auxiliares para Manipular o "Banco de Dados" JSON ---
 
 def load_tasks():
     """Carrega as tarefas do arquivo tasks.json."""
@@ -22,7 +20,6 @@ def save_tasks(tasks):
     with open('tasks.json', 'w') as f:
         json.dump(tasks, f, indent=4)
 
-# --- Endpoints da API ---
 
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
@@ -63,7 +60,7 @@ def update_task(task_id):
     if task is None:
         return jsonify({'error': 'Tarefa não encontrada'}), 404
 
-    # Atualiza os campos se eles forem fornecidos no corpo da requisição
+    # atualiza os campos se eles forem fornecidos no corpo da requisição
     task['title'] = request.json.get('title', task['title'])
     task['completed'] = request.json.get('completed', task['completed'])
     
