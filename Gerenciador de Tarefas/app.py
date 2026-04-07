@@ -2,7 +2,7 @@
 
 from flask import Flask, request, jsonify
 import json
-import uuid # Importa a biblioteca para IDs únicos
+import uuid # importa a biblioteca para IDs únicos
 
 app = Flask(__name__)
 
